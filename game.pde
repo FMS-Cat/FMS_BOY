@@ -15,6 +15,9 @@ void game(){
     if(cassetteSelect==1){
         con();
     }
+    if(cassetteSelect==2){
+        aci();
+    }
   }
   gD.endDraw();
 }

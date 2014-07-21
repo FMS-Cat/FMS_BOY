@@ -49,7 +49,7 @@ float vAni,hAni,aAni,bAni,startAni,selectAni; // ボタンのアニメーショ�
 float cameraX,cameraY,cameraZ,cameraAuto; // 邪魔カメラ視点
 int cameraUp,cameraDown,cameraLeft,cameraRight,shift; // 邪魔カメラ用のボタン入力
 PFont fontL,fontF; // フォント
-PImage labelArk,labelCon; // カセットのラベル
+PImage labelArk,labelCon,labelAci; // カセットのラベル
 PImage splashFMS; // スプラッシュの画像
 int bg; // 背景
 AudioPlayer splashSound; // 起動音
@@ -63,6 +63,7 @@ void setup(){
   fontF=loadFont("fami.vlw");
   labelArk=loadImage("arkanoid.png");
   labelCon=loadImage("conway.png");
+  labelAci=loadImage("acid.png");
   splashFMS=loadImage("FMS.png");
   minim=new Minim(this);
   bgSetup();
@@ -139,6 +140,14 @@ void draw(){
   if(insertAni<0.8)cassette(labelCon);
   popMatrix();
   
+  // カセット（アシッド）を描画
+  pushMatrix();
+  translate(600-cassetteSelectAni*300,height/4*(-1+insertAni*0.6+zoomAni*(0.2+(1-flipAni)*0.8)-abs(2-cassetteSelect)*flipAni*2),zoomAni*300);
+  rotateX(0.1);
+  rotateY(PI*flipAni);
+  if(insertAni<0.8)cassette(labelAci);
+  popMatrix();
+  
   // 本体を描画
   pushMatrix();
   translate(0,height/4*(1-flipAni*0.3-insertAni*0.6+zoomAni*(0.2+(1-flipAni)*0.8)),zoomAni*300);
@@ -161,7 +170,7 @@ void keyPressed(){
       if(key=='s')cassetteSelect--;
       if(key=='f')cassetteSelect++;
       cassetteSelect=max(0,cassetteSelect);
-      cassetteSelect=min(cassetteSelect,1);
+      cassetteSelect=min(cassetteSelect,2);
       if(key=='k'){
         flip=1;
       }
