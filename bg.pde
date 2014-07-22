@@ -54,7 +54,7 @@ void bg(){
     // キューブアニメーション
     cubeRX+=0.0091+cbAni[4]*0.24;
     cubeRY+=0.0127+pow(cbAni[10],2)*0.3;
-    cubeRZ+=0.0009+cbAni[12]*0.1+pow(cbAni[8],4)*0.9;
+    cubeRZ+=0.0009+cbAni[12]*0.1+pow(cbAni[8],3)*0.9;
     for(int c92=0;c92<13;c92++){
       cbAni[c92]*=.8;
     }

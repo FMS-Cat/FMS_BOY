@@ -211,6 +211,8 @@ class ArkBall{
   void move(){
     x+=vx;
     y+=vy;
+    vx+=cameraY*.01;
+    vy-=cameraX*.01;
   }
   
   // ボールを表示する処理

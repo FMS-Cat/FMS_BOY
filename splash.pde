@@ -7,6 +7,7 @@ void splash(){
     power=2; // ゲーム画面に移行
     if(cassetteSelect==0)arkSetup();
     if(cassetteSelect==1)conSetup();
+    if(cassetteSelect==2)aciSetup();
     return;
   }
   

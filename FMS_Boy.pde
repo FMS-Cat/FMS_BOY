@@ -35,6 +35,8 @@
 */
 
 import ddf.minim.*;
+import ddf.minim.signals.*;
+import ddf.minim.effects.*;
 Minim minim;
 
 int cassetteSelect=0; // 0がアルカノイド、1がライフゲーム
@@ -55,6 +57,7 @@ int bg; // 背景
 AudioPlayer splashSound; // 起動音
 
 void setup(){
+  frameRate(60);
   size(640,640,OPENGL);
   rectMode(CENTER);
   imageMode(CENTER);

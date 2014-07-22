@@ -1,12 +1,12 @@
-int conTrigger,conClock;
-int conYoko=16,conTate=13;
-int conStep;
-int[][] conLife=new int[conYoko][conTate];
-int[][] conLifeP=new int[conYoko][conTate];
-int conMove=1,conSeq=1;
-int conPointX=0,conPointY=0;
-AudioPlayer[] conSnd=new AudioPlayer[13];
-AudioPlayer conKick;
+int conTrigger,conClock; // ステップが進むタイミングの管理をする変数
+int conYoko=16,conTate=13; // コンウェイのフィールドの大きさ
+int conStep; // シーケンサーの16ステップ
+int[][] conLife=new int[conYoko][conTate]; // コンウェイの生死
+int[][] conLifeP=new int[conYoko][conTate]; // コンウェイの生死を一時的に格納しておく配列
+int conMove=1,conSeq=0; // 世代の進行、シーケンサーのオンオフ
+int conPointX=0,conPointY=0; // カーソルの位置
+AudioPlayer[] conSnd=new AudioPlayer[13]; // 各行に割り当てられている音
+AudioPlayer conKick; // 4ステップごとになるキック
 
 void conSetup(){
   conKick=minim.loadFile("kick.wav");
@@ -127,10 +127,10 @@ void con(){
   }else{
     if(a==1)conLife[conPointX][conPointY]=1;
     if(b==1)conLife[conPointX][conPointY]=0;
-    if(leftP==1||leftP>20)conPointX=(conPointX+conYoko-1)%conYoko;
-    if(rightP==1||rightP>20)conPointX=(conPointX+1)%conYoko;
-    if(upP==1||upP>20)conPointY=(conPointY+conTate-1)%conTate;
-    if(downP==1||downP>20)conPointY=(conPointY+1)%conTate;
+    if(leftP==1||(leftP>20&&leftP%4==0))conPointX=(conPointX+conYoko-1)%conYoko;
+    if(rightP==1||(rightP>20&&rightP%4==0))conPointX=(conPointX+1)%conYoko;
+    if(upP==1||(upP>20&&upP%4==0))conPointY=(conPointY+conTate-1)%conTate;
+    if(downP==1||(downP>20&&downP%4==0))conPointY=(conPointY+1)%conTate;
     if(startP==1){conSeq=1-conSeq;conStep=15;conClock=millis();}
   }
   
