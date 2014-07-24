@@ -57,7 +57,7 @@ int bg; // 背景
 AudioPlayer splashSound; // 起動音
 
 void setup(){
-  frameRate(60);
+  frameRate(120);
   size(640,640,OPENGL);
   rectMode(CENTER);
   imageMode(CENTER);

@@ -67,11 +67,11 @@ void bg(){
   
   for(int flip=-1;flip<2;flip+=2){
     pushMatrix();
-    translate(width/2+width*.62*flip+20*pow(cbAni[1],4)*flip,height/3+20*pow(cbAni[3],2),-600+100*bgAppAni+cos(frameCount*PI)*15*cbAni[11]);
+    translate(width/2+width*.62*flip+40*pow(cbAni[1],4)*flip,height/3+40*pow(cbAni[3],2),-600+100*bgAppAni+cos(frameCount*PI)*15*cbAni[11]);
     rotateX(cubeRX);
     rotateY(cubeRY*flip);
     rotateZ(cubeRZ*flip);
-    box(140+beat*20-cbAni[2]*15+pow(cbAni[6],2.5)*60,140+beat*20-cbAni[2]*15+cbAni[0]*20,140+beat*20-cbAni[2]*15);
+    box(140+beat*20-cbAni[2]*15+pow(cbAni[6],2.5)*120,140+beat*20-cbAni[2]*15+cbAni[0]*20,140+beat*20-cbAni[2]*15);
     popMatrix();
   }
 }
